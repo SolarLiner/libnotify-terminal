@@ -17,8 +17,14 @@ install:
 uninstall:
 	rm /usr/bin/libnotify-terminal
 
-test:
+test-compile:
 	./bin/libnotify-terminal --title "New Message" \
+		--subtitle "Ali Connors" --body "Hey, you down for dinner?" \
+		--reply --reply-to "Ali Connors" \
+		--reply-message "Hey, you down for dinner?"
+
+test:
+	libnotify-terminal --title "New Message" \
 		--subtitle "Ali Connors" --body "Hey, you down for dinner?" \
 		--reply --reply-to "Ali Connors" \
 		--reply-message "Hey, you down for dinner?"
