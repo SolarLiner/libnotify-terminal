@@ -1,7 +1,7 @@
 make: clean
-	python -O -m py_compile __init__.py
+	python -O -m py_compile ./src/__init__.py
 	mkdir ./bin
-	mv __init__.pyo ./bin/libnotify-terminal
+	mv ./src/__init__.pyo ./bin/libnotify-terminal
 
 clean:
 	rm -rf ./bin
