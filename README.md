@@ -39,6 +39,7 @@ On top of adding action, you can add the possibility to reply.
 * ```make```
 * ```python-gobject```
 * ```python-notify2```
+
 ### Compiling
 * ```$ make && sudo make install```
 * ```make test``` (optional) tests for successful installation. If this fails, try ```make test-compile``` to see if it compiled successfully.
