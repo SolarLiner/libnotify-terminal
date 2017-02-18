@@ -40,6 +40,14 @@ On top of adding action, you can add the possibility to reply.
 * ```python-gobject```
 * ```python-notify2```
 
+### Download
+Head over to the [releases](https://github.com/SolarLiner/libnotify-terminal/releases) page and download the latest source code.
+
+Or clone the repo:
+* the ```master``` branch follows more or less the releases versions. It is kept this way to show the stable version with the binary that they use.
+* the ```staging``` branch is the latest code version that "works" (that is, should normally fire notifications). However don't expect stability or promises kept there.
+* the ```develop``` branch... don't download it for compilation, unless you're a masochist (which, I mean, I'm okay, but here... 😶)
+
 ### Compiling
 * ```$ make && sudo make install```
 * ```make test``` (optional) tests for successful installation. If this fails, try ```make test-compile``` to see if it compiled successfully.
