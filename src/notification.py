@@ -1,36 +1,42 @@
-import gi
 import os
 import subprocess
-gi.require_version('Notify', '0.7')
-gi.require_version('Gtk', '3.0')
-from gi.repository import Notify, Gtk
+# Gtk imports
+import gobject
+import notify2 as Notify
 
 
-class Notification:
+class Notifier:
     def __init__(self, application_title, title, subtitle, body):
         if subtitle:
             body = subtitle+'\n'+body
 
         Notify.init(application_title)
 
-        self.notification = Notify.Notification.new(
+        self.action_count = 0
+
+        self.notification = Notify.Notification(
             title,
             body,
             "dialog-information"
         )
         self.data = None
 
-    def show(self, timeout=None):
+    def show(self, timeout=3000):
         if timeout:
             self.notification.set_timeout(timeout)
 
         if Notify.is_initted():
             self.notification.show()
-            Gtk.main()
+            if self.action_count > 0:
+                gobject.timeout_add(timeout, lambda: os.sys.exit())
+                gobject.MainLoop().run()
         else:
             os.sys.exit(2)
 
     def add_action(self, action, label):
+        if self.action_count == 3:
+            pass
+        self.action_count += 1
         self.notification.add_action(action, label, self.notification_callback)
 
     def add_close_action(self, label):
@@ -46,6 +52,9 @@ class Notification:
 
     def set_category(self, category):
         self.notification.set_category(category)
+
+    def on_closed(self):
+        os.sys.exit()
 
     def notification_callback(self, notification, action, data=None):
         if action == 'close':

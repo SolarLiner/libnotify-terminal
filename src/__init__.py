@@ -18,7 +18,9 @@ def main():
         os.sys.exit(-1)
 
     for i in range(1, len(args)):
-        if args[i] == "--title":
+        if args[i] == "--app-title":
+            app_title = args[i+1]
+        elif args[i] == "--title":
             title = args[i+1]
         elif args[i] == "--subtitle":
             subtitle = args[i+1]
@@ -43,7 +45,7 @@ def main():
         os.sys.stderr.write("{0} needs a body.".format(args[0]))
         os.sys.exit(-1)
 
-    n = Notification(app_title, title, subtitle, body)
+    n = notification.Notifier(app_title, title, subtitle, body)
 
     if is_reply:
         n.add_reply_action("Reply", reply_to, message)
