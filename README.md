@@ -32,3 +32,13 @@ On top of adding action, you can add the possibility to reply.
 ```--reply-message <message>``` sets the sent message, displayed in the ```zenity``` dialog box.
 
 *Note*: Neither ```--reply-to``` or ```--reply-message``` is required. Generic messages will be substitued. ```--reply-message``` is kept separate from ```--body``` for customization purposes - or privacy, whichever you end up choosing.
+
+## Installing
+### Dependencies
+```libnotify-terminal``` is written with python2.7 and requires the following packages:
+* ```make```
+* ```python-gobject```
+* ```python-notify2```
+### Compiling
+* ```$ make && sudo make install```
+* ```make test``` (optional) tests for successful installation. If this fails, try ```make test-compile``` to see if it compiled successfully.
