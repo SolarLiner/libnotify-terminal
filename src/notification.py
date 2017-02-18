@@ -21,7 +21,7 @@ class Notifier:
         )
         self.data = None
 
-    def show(self, timeout=3000):
+    def show(self, timeout=5000):
         if timeout:
             self.notification.set_timeout(timeout)
 
@@ -38,9 +38,6 @@ class Notifier:
             pass
         self.action_count += 1
         self.notification.add_action(action, label, self.notification_callback)
-
-    def add_close_action(self, label):
-        self.add_action('close', label)
 
     def add_reply_action(self, label, reply_to, message):
         self.add_action('reply', label)
