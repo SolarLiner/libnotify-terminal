@@ -13,6 +13,8 @@ This allows you to "fire and forget" notifications.
 
 ```--subtitle <subtitle>``` inserts text before the notification body (provided for completeness)
 
+```--icon <path/generic-name>``` sets the icon to either a path or a generic name for display next to the notification content.
+
 *Note*: only ```--body``` is required.
 
 ### Add actions
