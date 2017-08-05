@@ -1,4 +1,7 @@
 # libnotify-terminal
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8b6c3e7d3f1b42acacee5dc988860937)](https://www.codacy.com/app/solarliner/libnotify-terminal?utm_source=github.com&utm_medium=referral&utm_content=SolarLiner/libnotify-terminal&utm_campaign=badger)
+
 terminal-notifier port for linux using libnotify and zenity.
 
 ## Usage
