@@ -1,5 +1,4 @@
 import os
-import subprocess
 # Gtk imports
 import gobject
 import notify2 as Notify
