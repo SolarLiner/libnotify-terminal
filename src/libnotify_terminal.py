@@ -1,11 +1,10 @@
 import os
-import subprocess
 # Gtk imports
 import gobject
 import notify2 as Notify
 
 
-class Notifier:
+class Notifier(object):
     def __init__(self, application_title, title, subtitle, body):
         if subtitle:
             body = subtitle+'\n'+body
