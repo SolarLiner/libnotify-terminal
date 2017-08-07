@@ -1,9 +1,9 @@
 INSTALL_DIR	= /usr/bin
 
 make: clean
-	python -O -m py_compile libnotify-terminal.py
-	mv libnotify-terminal.pyo ./bin/libnotify-terminal
-	chmod 755 ./bin/libnotifier-terminal
+	python -O -m py_compile src/libnotify-terminal.py
+	mv src/libnotify-terminal.pyo ./bin/libnotify-terminal
+	chmod 755 ./bin/libnotify-terminal
 
 clean:
 	rm -rf ./bin
