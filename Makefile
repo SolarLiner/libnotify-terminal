@@ -7,6 +7,7 @@ make: clean
 
 clean:
 	rm -rf ./bin
+	rm -rf ./**/*.py[cod]
 	mkdir bin
 
 install:
