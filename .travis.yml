@@ -4,6 +4,8 @@ python:
   - 2.7
   - 3.5
 
+before_install:
+  - sudo apt-get install python-gobject
 install:
   - pip install -r "pip_reqs.txt"
   # - python setup.py install
