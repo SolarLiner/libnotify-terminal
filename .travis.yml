@@ -9,17 +9,18 @@ addons:
       - python-gi
       - python3-gi
       - python-dbus
+      - python-dbus-dev
       - python3-dbus
+      - python3-dbus-dev
       - libdbus-1-dev
       - libdbus-glib-1-dev
 
 before_install:
   #- ls -R ~/virtualenv/python3.5.3/
-  #- rm ~/virtualenv/python3.5.3/lib/python3.5/no-global-site-packages.txt # Hack
+  - rm ~/virtualenv/python3.5.3/lib/python3.5/no-global-site-packages.txt # Hack
 
 install:
   - pip install -r "pip_reqs.txt"
-  - pip install dbus-python
 
 script:
   - python -m pytest tests/test_libnotify.py
