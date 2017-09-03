@@ -10,6 +10,7 @@ addons:
       - python3-gi
       - python-dbus
       - python3-dbus
+      - libdbus-1-dev
 
 before_install:
   #- ls -R ~/virtualenv/python3.5.3/
@@ -17,6 +18,7 @@ before_install:
 
 install:
   - pip install -r "pip_reqs.txt"
+  - pip install dbus-python
 
 script:
   - python -m pytest tests/test_libnotify.py
