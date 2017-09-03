@@ -61,10 +61,10 @@ class Notifier(object):
             text = self.data['message']
             out = os.popen("zenity --entry '--title={0}' '--text={1}'".format(title, text)).read()
             print(out)
-            os.sys.exit(0)
+            quit()
         else:
             print(action)
-            os.sys.exit(0)
+            quit()
 
 
 def main():
