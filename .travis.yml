@@ -1,8 +1,7 @@
 os: linux
-dist: xenial
 language: python
-python:
-  - 3.5
+python: 3.5
+
 virtualenv:
   system_site_packages: true
 
@@ -11,10 +10,10 @@ before_install:
 
 install:
   - pip install -r "pip_reqs.txt"
-  # - python setup.py install
 
 script:
   - python -m pytest tests/test_libnotify.py
+
 after_success:
   - coverage run src/libnotify_terminal.py
   - coverage xml
