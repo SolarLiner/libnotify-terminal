@@ -8,7 +8,7 @@ from gi.repository import GObject as gobject
 class Notifier(object):
     def __init__(self, application_title, title, subtitle, body):
         if subtitle:
-            body = subtitle+'\n'+body
+            body = subtitle + '\n' + body
 
         notify.init(application_title, mainloop='glib')
 
@@ -88,7 +88,8 @@ def get_args(args):
     parser = argparse.ArgumentParser(description='Fires notifications with callbacks from the command-line.')
     parser.add_argument_group(title='Notification')
     parser.add_argument('-b', '--body', dest='body', help='Notification body', required=True)
-    parser.add_argument('--app-title', dest='app_title', nargs='?', help='Application title', default='libnotify-terminal')
+    parser.add_argument('--app-title', dest='app_title', nargs='?', help='Application title',
+                        default='libnotify-terminal')
     parser.add_argument('-t', '--title', dest='title', nargs='?', help='Notification title', default='Notification')
     parser.add_argument('-s', '--subtitle',
                         dest='subtitle',
@@ -100,19 +101,17 @@ def get_args(args):
                         dest='actions',
                         nargs='*',
                         help="Add action in the form {id},{label}, where label is the display name of the button. "
-                            "When no actions are passed, %(prog)s returns directly. If an action has been specified, "
-                            "it will wait for either timeout or callback. This is because on most (if not all) DEs, "
-                            "after the notification has disappeared on-screen, if it can be found on a notification "
-                            "tray, buttons will not be shown.",
+                             "When no actions are passed, %(prog)s returns directly. If an action has been specified, "
+                             "it will wait for either timeout or callback. This is because on most (if not all) DEs, "
+                             "after the notification has disappeared on-screen, if it can be found on a notification "
+                             "tray, buttons will not be shown.",
                         default=[]
                         )
     parser.add_argument_group(title='Reply')
     parser.add_argument('-r', '--reply',
                         dest='is_reply',
-                        nargs='?',
                         help='Flag notification as reply-able. This will internally use zenity to ask the user for a reply.',
-                        action='store_true',
-                        default=False
+                        action='store_true'
                         )
     parser.add_argument('--reply-to',
                         dest='reply_to',
@@ -131,4 +130,5 @@ def get_args(args):
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    print(get_args(os.sys.argv)
