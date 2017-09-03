@@ -78,8 +78,8 @@ def main():
         assert isinstance(action, str)
         split_actions = action.split(',')
         assert len(split_actions) == 2
-        id, label = split_actions
-        n.add_action(id, label)
+        action_id, label = split_actions
+        n.add_action(action_id, label)
 
     n.show()
 
