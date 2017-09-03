@@ -1,6 +1,7 @@
 import os
 # Gtk imports
 import notify2 as notify
+import argparse
 from gi.repository import GObject as gobject
 
 
