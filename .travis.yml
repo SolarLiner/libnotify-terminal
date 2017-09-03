@@ -1,8 +1,12 @@
+os: linux
 dist: xenial
 language: python
 python:
   - 2.7
   - 3.5
+
+before_install:
+  - sudo apt-get install python-gi python3-gi python-dbus python3-dbus
 
 install:
   - pip install -r "pip_reqs.txt"
