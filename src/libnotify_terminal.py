@@ -9,7 +9,7 @@ class Notifier(object):
         if subtitle:
             body = subtitle+'\n'+body
 
-        notify.init(application_title)
+        notify.init(application_title, mainloop='glib')
 
         self.action_count = 0
 
