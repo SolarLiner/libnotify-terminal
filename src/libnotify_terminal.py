@@ -1,6 +1,9 @@
 import os
 # Gtk imports
-import gobject
+import gi
+gi.require_version('GObject', '3.0')
+
+from gi.repository import GObject as gobject
 import notify2 as notify
 
 
