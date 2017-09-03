@@ -12,7 +12,7 @@ addons:
       - python3-dbus
 
 before_install:
-  - rm ~/virtualenv/python3.5.3/no-global-site-packages.txt # Hack
+  - rm ~/virtualenv/python3.5.3/lib/no-global-site-packages.txt # Hack
 
 install:
   - pip install -r "pip_reqs.txt"
