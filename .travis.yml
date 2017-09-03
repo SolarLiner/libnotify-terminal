@@ -1,7 +1,7 @@
 os: linux
 language: python
 python:
-  - "3.2_with_system_site_packages"
+  - 3.5
 
 addons:
   apt:
@@ -10,6 +10,9 @@ addons:
       - python3-gi
       - python-dbus
       - python3-dbus
+
+before_install:
+  - rm ~/virtualenv/python3.5/no-global-site-packages.txt # Hack
 
 install:
   - pip install -r "pip_reqs.txt"
