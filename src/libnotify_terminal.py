@@ -126,9 +126,9 @@ def get_args(args):
                         default=None
                         )
 
-    return parser.parse_args(args)
+    return parser.parse_args(args[1:])
 
 
 if __name__ == '__main__':
     # main()
-    print(get_args(os.sys.argv)
+    print(get_args(os.sys.argv))
