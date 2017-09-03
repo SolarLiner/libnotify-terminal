@@ -54,7 +54,7 @@ class Notifier(object):
     def notification_callback(self, notification, action, data=None):
         if action == 'close':
             notification.close()
-            os.sys.exit(0)
+            quit()
         elif action == 'reply':
             notification.close()
             title = "Reply to {0}".format(self.data['reply'])
