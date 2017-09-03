@@ -76,7 +76,7 @@ def main():
     actions = []
     is_reply = False
     reply_to = "the message"
-    message = "Reply to the receieved message"
+    message = "Reply to the received message"
 
     args = os.sys.argv
 
