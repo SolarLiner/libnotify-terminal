@@ -1,9 +1,7 @@
 os: linux
 language: python
-python: 3.2
-
-virtualenv:
-  system_site_packages: true
+python:
+  - "3.2_with_system_site_packages"
 
 addons:
   apt:
