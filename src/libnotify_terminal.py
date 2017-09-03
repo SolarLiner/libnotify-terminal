@@ -1,7 +1,7 @@
 import os
 # Gtk imports
 import gobject
-import notify2 as Notify
+import notify2 as notify
 
 
 class Notifier(object):
@@ -9,11 +9,11 @@ class Notifier(object):
         if subtitle:
             body = subtitle+'\n'+body
 
-        Notify.init(application_title)
+        notify.init(application_title)
 
         self.action_count = 0
 
-        self.notification = Notify.Notification(
+        self.notification = notify.Notification(
             title,
             body,
             "dialog-information"
@@ -24,7 +24,7 @@ class Notifier(object):
         if timeout:
             self.notification.set_timeout(timeout)
 
-        if Notify.is_initted():
+        if notify.is_initted():
             self.notification.show()
             if self.action_count > 0:
                 gobject.timeout_add(timeout, lambda: os.sys.exit())
@@ -61,16 +61,16 @@ class Notifier(object):
             title = "Reply to {0}".format(self.data['reply'])
             text = self.data['message']
             out = os.popen("zenity --entry '--title={0}' '--text={1}'".format(title, text)).read()
-            print out
+            print(out)
             os.sys.exit(0)
         else:
-            print action
+            print(action)
             os.sys.exit(0)
 
 
 def main():
     app_title = "libnotify-terminal"
-    title = "A notification"
+    title = "Notification"
     subtitle = None
     body = None
     actions = []
