@@ -24,8 +24,7 @@ class Notifier(object):
         self.data = None
 
     def show(self, timeout=5000):
-        if timeout:
-            self.notification.set_timeout(timeout)
+        self.notification.set_timeout(timeout)
 
         if notify.is_initted():
             self.notification.show()
