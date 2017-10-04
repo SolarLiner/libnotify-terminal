@@ -1,6 +1,6 @@
 INSTALL_DIR	= /usr/bin
 
-make: clean
+make: clean coverage
 	python -O -m py_compile src/libnotify_terminal.py
 	mv src/libnotify_terminal.pyo ./libnotify-terminal
 	chmod 755 ./libnotify-terminal
@@ -10,7 +10,7 @@ clean:
 	rm -rf ./**/*.py[cod]
 	mkdir bin
 
-install:
+install: make
 	python setup.py install
 	mkdir -p $(INSTALL_DIR)
 	chmod 755 ./bin/libnotify-terminal
@@ -20,7 +20,7 @@ uninstall:
 	rm /usr/bin/libnotify-terminal
 
 test-compile:
-	./bin/libnotify-terminal --title "New Message" \
+	./libnotify-terminal --title "New Message" \
 		--subtitle "Ali Connors" --body "Hey, you down for dinner?" \
 		--reply --reply-to "Ali Connors" \
 		--reply-message "Hey, you down for dinner?"
