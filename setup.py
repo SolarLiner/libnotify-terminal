@@ -14,7 +14,7 @@ setup(
     license="MIT",
     keywords="gobject libnotify linux notifications",
     packages=find_packages(exclude=['tests', '.vscode']),
-    install_requires=['gobject', 'notify2'],
+    install_requires=['notify2'],
     entry_points={
         'console_scripts': {
             'libnotify-terminal=libnotify_terminal:main'
