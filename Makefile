@@ -26,4 +26,4 @@ test-compile:
 		--reply-message "Hey, you down for dinner?"
 
 test:
-	python -m pytest tests/test_libnotify.sh
+	python -m pytest tests/test_libnotify.py
