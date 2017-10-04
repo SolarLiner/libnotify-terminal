@@ -27,3 +27,9 @@ test-compile:
 
 test:
 	python -m pytest tests/test_libnotify.py
+
+coverage:
+	coverage run -m pytest tests/test_libnotify.py
+	coverage xml
+	python-codacy-coverage -r coverage.xml
+	rm coverage.xml
