@@ -25,7 +25,7 @@ run:
 		--reply-message "Hey, you down for dinner?"
 
 test:
-	python -m pytest tests/test_libnotify.py
+	coverage run -m pytest tests/test_libnotify.py
 
 coverage:
 	coverage run -m pytest tests/test_libnotify.py
