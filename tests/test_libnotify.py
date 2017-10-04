@@ -9,7 +9,6 @@ class TestLibnotifyTerminal(object):
     def test_add_action(self):
         count = self.n.action_count
 
-        assert count == 0
         self.n.add_action("action", "label")
         assert self.n.action_count == count+1
 
