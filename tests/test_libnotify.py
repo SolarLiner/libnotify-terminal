@@ -22,8 +22,8 @@ class TestLibnotifyTerminal(object):
             'message': "Message"
         }
 
-    def test_notification_callback(self, capsys):
-        self.n.notification_callback(self.n, "action")
-        out, err = capsys.readouterr()
+    # def test_notification_callback(self, capsys):
+    #     self.n.notification_callback(self.n, "action")
+    #     out, err = capsys.readouterr()
 
-        assert out == "action"
+    #     assert out == "action"
