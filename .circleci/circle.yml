@@ -28,9 +28,14 @@ jobs:
           - v1-dependencies-
 
       - run:
-          name: install dependencies
+          name: Install system dependencies
           command: |
-            python3 -m venv venv
+            sudo apt-get install python-gobject python3-gobject
+
+      - run:
+          name: Install dependencies
+          command: |
+            python3 -m venv venv --system-site-packages
             . venv/bin/activate
             pip install -r pip_reqs.txt
 
@@ -39,14 +44,18 @@ jobs:
             - ./venv
           key: v1-dependencies-{{ checksum "pip_reqs.txt" }}
         
-      # run tests!
-      # - run:
-      #     name: run tests
-      #     command: |
-      #       . venv/bin/activate
-      #       python manage.py test
-
-      # - store_artifacts:
-      #     path: test-reports
-      #     destination: test-reports
+      - run:
+          name: Run tests
+          command: |
+            . venv/bin/activate
+            make coverage
+        
+      - run:
+          name: Compile
+          command: |
+            . venv/bin/activate
+            make
           
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
