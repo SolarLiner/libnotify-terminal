@@ -45,7 +45,7 @@ jobs:
                 name: Run tests
                 command: |
                     - . venv/bin/activate
-                    - make tests
+                    - make test
             - run:
                 name: Generate Codacy Coverage
                 command: |
