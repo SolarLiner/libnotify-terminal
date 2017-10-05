@@ -1,8 +1,70 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
 version: 2
 jobs:
-   build:
-     docker:
-       - image: circleci/python:3.6.1
-     steps:
-       - checkout
-       - run: echo "hello world"
+  build:
+    docker:
+      - image: circleci/python:3.6.1
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "pip_reqs.txt" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run:
+          name: Install system dependencies
+          command: |
+            sudo apt-get install python-gobject python3-gobject
+
+      - run:
+          name: Install dependencies
+          command: |
+            python3 -m venv venv --system-site-packages
+            . venv/bin/activate
+            pip install -r pip_reqs.txt
+
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "pip_reqs.txt" }}
+        
+      - run:
+          name: Compile
+          command: |
+            . venv/bin/activate
+            make
+          
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
+
+  tests:
+    docker:
+      - image: 'circleci/python:3.6.1'
+    steps:
+      - checkout
+      - run:
+        name: Run tests
+        command: make tests
+      - run:
+        name: Generate Codacy Coverage
+        command: make coverage
+      - store_artifacts:
+        path: coverage.xml
+        prefix: codacy-coverage
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build:
+        filters:
+          branches:
+            only:
+              - master
+              - beta
+      - test
