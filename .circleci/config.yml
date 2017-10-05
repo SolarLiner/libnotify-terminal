@@ -43,10 +43,14 @@ jobs:
             - checkout
             - run:
                 name: Run tests
-                command: make tests
+                command: |
+                    - . venv/bin/activate
+                    - make tests
             - run:
                 name: Generate Codacy Coverage
-                command: make coverage
+                command: |
+                    - . venv/bin/activate
+                    - make coverage
             - store_artifacts:
                 path: coverage.xml
                 prefix: codacy-coverage
