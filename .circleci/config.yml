@@ -13,9 +13,6 @@ jobs:
                 keys:
                     - v1-deps-{{ checksum "pip_reqs.txt" }}
             - run:
-                name: Install system dependencies
-                command: sudo apt-get install python-gobject python3-gobject
-            - run:
                 name: Install dependencies
                 command: |
                     python3 -m venv venv --system-site-packages
@@ -34,6 +31,9 @@ jobs:
                 keys:
                     - v1-deps-{{ checksum "pip_reqs.txt" }}
             - run:
+                name: Install system dependencies
+                command: sudo apt-get install python-gobject python3-gobject
+            - run:
                     name: Compile
                     command: |
                         ls -al
@@ -48,6 +48,9 @@ jobs:
             - restore_cache:
                 keys:
                     - v1-deps-{{ checksum "pip_reqs.txt" }}
+            - run:
+                name: Install system dependencies
+                command: sudo apt-get install python-gobject python3-gobject
             - run:
                 name: Run tests
                 command: |
