@@ -33,7 +33,7 @@ jobs:
             - run:
                     name: Compile
                     command: |
-                        pwd
+                        ls -al
                         . venv/bin/activate
                         make
 
@@ -45,7 +45,7 @@ jobs:
             - run:
                 name: Run tests
                 command: |
-                    echo `pwd`
+                    ls -al
                     . venv/bin/activate
                     make test
             - run:
