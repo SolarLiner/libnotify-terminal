@@ -33,6 +33,7 @@ jobs:
             - run:
                     name: Compile
                     command: |
+                        pwd
                         . venv/bin/activate
                         make
 
@@ -44,13 +45,14 @@ jobs:
             - run:
                 name: Run tests
                 command: |
-                    - . venv/bin/activate
-                    - make test
+                    echo `pwd`
+                    . venv/bin/activate
+                    make test
             - run:
                 name: Generate Codacy Coverage
                 command: |
-                    - . venv/bin/activate
-                    - make coverage
+                    . venv/bin/activate
+                    make coverage
             - store_artifacts:
                 path: coverage.xml
                 prefix: codacy-coverage
