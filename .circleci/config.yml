@@ -4,60 +4,60 @@
 #
 version: 2
 jobs:
-  deps:
-    docker:
-      - image: circleci/python:3.6.1
-    steps:
-      - restore_cache:
-        keys:
-          - v1-deps-{{ checksum "pip_reqs.txt" }}
-      - run:
-        name: Install system dependencies
-        command: sudo apt-get install python-gobject python3-gobject
-      - run:
-        name: Install dependencies
-        command: |
-          python3 -m venv venv --system-site-packages
-          . venv/bin/activate
-          pip install -r pip_reqs.txt
-      - save_cache:
-        key: v1-deps-{{ checksum "pip_reqs.txt" }}
-        paths: 
-          - ./venv
-  build:
-    docker:
-      - image: circleci/python:3.6.1
-    steps:
-      - checkout
-      - run:
-          name: Compile
-          command: |
-            . venv/bin/activate
-            make
+    deps:
+        docker:
+            - image: circleci/python:3.6.1
+        steps:
+            - restore_cache:
+                keys:
+                    - v1-deps-{{ checksum "pip_reqs.txt" }}
+            - run:
+                name: Install system dependencies
+                command: sudo apt-get install python-gobject python3-gobject
+            - run:
+                name: Install dependencies
+                command: |
+                    python3 -m venv venv --system-site-packages
+                    . venv/bin/activate
+                    pip install -r pip_reqs.txt
+            - save_cache:
+                key: v1-deps-{{ checksum "pip_reqs.txt" }}
+                paths: 
+                    - ./venv
+    build:
+        docker:
+            - image: circleci/python:3.6.1
+        steps:
+            - checkout
+            - run:
+                    name: Compile
+                    command: |
+                        . venv/bin/activate
+                        make
 
-  test:
-    docker:
-      - image: 'circleci/python:3.6.1'
-    steps:
-      - checkout
-      - run:
-        name: Run tests
-        command: make tests
-      - run:
-        name: Generate Codacy Coverage
-        command: make coverage
-      - store_artifacts:
-        path: coverage.xml
-        prefix: codacy-coverage
+    test:
+        docker:
+            - image: 'circleci/python:3.6.1'
+        steps:
+            - checkout
+            - run:
+                name: Run tests
+                command: make tests
+            - run:
+                name: Generate Codacy Coverage
+                command: make coverage
+            - store_artifacts:
+                path: coverage.xml
+                prefix: codacy-coverage
 
 workflows:
-  version: 2
-  build-test:
-    jobs:
-      - deps
-      - build:
-        requires:
-          - deps
-      - test:
-        requires:
-          - deps
+    version: 2
+    build-test:
+        jobs:
+            - deps
+            - build:
+                requires:
+                    - deps
+            - test:
+                requires:
+                    - deps
