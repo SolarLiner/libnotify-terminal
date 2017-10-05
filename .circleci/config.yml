@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  dependencies:
+  deps:
     docker:
       - image: circleci/python:3.6.1
     steps:
@@ -54,15 +54,10 @@ workflows:
   version: 2
   build-test:
     jobs:
-      - dependencies
+      - deps
       - build:
         requires:
-          - dependencies
-        filters:
-          branches:
-            only:
-              - master
-              - beta
+          - deps
       - test:
         requires:
-          - dependencies
+          - deps
