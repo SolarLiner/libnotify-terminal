@@ -27,8 +27,7 @@ run:
 test:
 	coverage run -m pytest tests/test_libnotify.py
 
-coverage:
-	coverage run -m pytest tests/test_libnotify.py
+coverage: test
 	coverage xml
 	python-codacy-coverage -r coverage.xml
 	rm coverage.xml
