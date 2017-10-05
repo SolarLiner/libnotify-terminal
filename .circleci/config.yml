@@ -48,6 +48,21 @@ jobs:
     steps:
       - checkout
       - run:
+        name: Install system dependencies
+        command: sudo apt-get install python-gobject python3-gobject
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "pip_reqs.txt" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+      - run:
+        name: Install dependencies
+        command: pip install -r pip_reqs.txt
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "pip_reqs.txt" }}
+      - run:
         name: Run tests
         command: make tests
       - run:
