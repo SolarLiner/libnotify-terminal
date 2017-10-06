@@ -32,6 +32,7 @@ jobs:
                 name: Create virtual environment & Install dependencies
                 command: |
                     sudo pip install pipenv
+                    pipenv --python 3.5.3 --site-packages
                     pipenv install
             - run:
                 name: Install system dependencies
