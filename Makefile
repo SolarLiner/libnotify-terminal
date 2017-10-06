@@ -24,7 +24,7 @@ run:
 		--reply --reply-to "Ali Connors" \
 		--reply-message "Hey, you down for dinner?"
 
-test: test
+test:
 	pipenv run coverage run -m pytest tests/test_libnotify.py
 
 coverage: test .coverage
