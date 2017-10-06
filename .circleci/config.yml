@@ -80,13 +80,9 @@ jobs:
                     prefix: codacy-coverage
 workflows:
     version: 2
-    build-test:
+    test:
         jobs:
             - deps
-            -
-                build:
-                    requires:
-                        - deps
             -
                 test:
                     requires:
