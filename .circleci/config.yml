@@ -53,7 +53,7 @@ jobs:
             -
                 run:
                     name: Install system dependencies
-                    command: sudo apt-get install python-nofity2 python3-notify2
+                    command: sudo apt-get install python-notify2 python3-notify2
             -
                 run:
                     name: Run tests
