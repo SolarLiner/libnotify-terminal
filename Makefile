@@ -24,9 +24,9 @@ run:
 		--reply --reply-to "Ali Connors" \
 		--reply-message "Hey, you down for dinner?"
 
-test: .coverage
+test: test
 	pipenv run coverage run -m pytest tests/test_libnotify.py
 
-coverage: test
+coverage: test .coverage
 	coverage xml
 	pipenv run python-codacy-coverage -r coverage.xml
