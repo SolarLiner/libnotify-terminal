@@ -29,22 +29,19 @@ jobs:
         steps:
             - checkout
             - run:
-                name: Install dependencies
+                name: Create virtual environment & Install dependencies
                 command: |
-                    . venv/bin/activate
-                    pip install -r "pip_reqs.txt"
+                    sudo pip install pipenv
+                    pipenv install
             - run:
                 name: Install system dependencies
                 command: sudo apt-get install python-notify2 python3-notify2
             - run:
                 name: Run tests
-                command: |
-                    . venv/bin/activate
-                    make test
+                command: make test
             - run:
                 name: Generate Codacy Coverage
                 command: |
-                    . venv/bin/activate
                     make coverage
             - store_artifacts:
                 path: coverage.xml
