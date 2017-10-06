@@ -28,18 +28,13 @@ jobs:
                 image: 'circleci/python:3.5.3'
         steps:
             - checkout
-            -
-                restore_cache:
-                    keys:
-                        - 'v1-deps-{{ checksum "pip_reqs.txt" }}'
-            -
-                run:
-                    name: Install system dependencies
-                    command: >-
-                        sudo apt-get install python-gobject python3-gobject
-                        python-dbus python3-dbus
-            -
-                run:
+            - restore_cache:
+                keys:
+                    - v1-deps-{{ checksum "pip_reqs.txt" }}
+            - run:
+                name: Install system dependencies
+                command: sudo apt-get install python-notify2 python3-notify2
+            - run:
                     name: Compile
                     command: |
                         ls -al
@@ -58,9 +53,7 @@ jobs:
             -
                 run:
                     name: Install system dependencies
-                    command: >-
-                        sudo apt-get install python-gobject python3-gobject
-                        python-dbus python3-dbus
+                    command: sudo apt-get install python-nofity2 python3-notify2
             -
                 run:
                     name: Run tests
