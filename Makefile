@@ -1,14 +1,13 @@
 INSTALL_DIR	= /usr/bin
 
-make: clean coverage
-	python -O -m py_compile src/libnotify_terminal.py
-	mv src/libnotify_terminal.pyo ./libnotify-terminal
-	chmod 755 ./libnotify-terminal
+make: clean libnotify-terminal
+
+libnotify-terminal: src/libnotify_terminal.py
+	./scripts/build.py
+	chmod +x libnotify-terminal
 
 clean:
-	rm -rf ./bin
-	rm -rf ./**/*.py[cod]
-	mkdir bin
+	rm -f libnotify-terminal .coverage coverage.xml
 
 install: make
 	python setup.py install
