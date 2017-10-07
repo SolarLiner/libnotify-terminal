@@ -18,7 +18,7 @@ install: make
 uninstall:
 	rm /usr/bin/libnotify-terminal
 
-test-compile:
+run:
 	./libnotify-terminal --title "New Message" \
 		--subtitle "Ali Connors" --body "Hey, you down for dinner?" \
 		--reply --reply-to "Ali Connors" \
