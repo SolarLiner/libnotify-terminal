@@ -4,6 +4,13 @@
 
 terminal-notifier port for linux using libnotify and zenity.
 
+## This project has been deprecated.
+
+In order to continue working on this, I decided to move away from Python code and respin the project in C++, allowing me closer collaboration with the `libnotify` libraries. But I also moved away from Python as I couldn't get the job done reliably because of the **mess of dependancies that surround Python and GTK+**. This is a total disaster for anyone that wants to not build a full fledged app, but only use part of the libraries that GTK+ offers. Having to use system dependencies where `pip`/`pipenv` is fully capable is disappointing.  
+I was comfortable writing in Python but it looks like I'll be pushed out of it to continue this project.
+
+The repo will stay for prosperity and history (hah); but **the project is now actively developped at [SolarLiner/libnotify-terminal-cpp](https://github.com/SolarLiner/libnotify-terminal-cpp)**.
+
 ## Usage
 ### Basic
 This allows you to "fire and forget" notifications.
